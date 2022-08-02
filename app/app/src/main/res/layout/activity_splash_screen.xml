@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red"
+    tools:context=".SplashScreenActivity">
+
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="229dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/app_title" />
+
+    <ImageView
+        android:id="@+id/iv_toilet"
+        android:layout_width="166dp"
+        android:layout_height="226dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/toilet"
+        app:layout_constraintEnd_toEndOf="@+id/iv_title"
+        app:layout_constraintStart_toStartOf="@+id/iv_title"
+        app:layout_constraintTop_toBottomOf="@+id/iv_title"
+        android:contentDescription="@string/iv_desc_logo_toilet" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sc_desc"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/quicksand_light"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/iv_toilet"
+        app:layout_constraintStart_toStartOf="@+id/iv_toilet"
+        app:layout_constraintTop_toBottomOf="@+id/iv_toilet" />
+
+    <ImageView
+        android:id="@+id/iv_pkm"
+        android:layout_width="190dp"
+        android:layout_height="64dp"
+        android:src="@drawable/pkm"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/iv_desc_logo_pkm" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

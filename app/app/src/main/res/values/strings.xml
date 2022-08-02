@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Touchless Smart Toilet</string>
+    <string name="sc_desc">Toilet cerdas\nuntuk memonitoring kesehatan anda</string>
+    <string name="iv_desc_logo_pkm">Logo PKM</string>
+    <string name="app_title">App Title</string>
+    <string name="iv_desc_logo_toilet">Logo Toilet</string>
 </resources>
