@@ -4,4 +4,8 @@
     <string name="iv_desc_logo_pkm">Logo PKM</string>
     <string name="app_title">App Title</string>
     <string name="iv_desc_logo_toilet">Logo Toilet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_feces_result">Hasil</string>
+    <string name="tab_text_feces_tips">Tips</string>
 </resources>

@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/drawable/bd_appbar.xml" value="0.241" />
         <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/drawable/bg_select.xml" value="0.1245" />
         <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/drawable/bg_tabs.xml" value="0.1245" />
+        <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/drawable/ic_header.xml" value="0.241" />
         <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/drawable/ic_main_bg.xml" value="0.2515" />
         <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/drawable/ic_toilet.xml" value="0.2515" />
-        <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/drawable/ic_toolbar_bg.xml" value="0.241" />
+        <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/layout/activity_main.xml" value="0.5389369592088998" />
         <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/layout/activity_splash_screen.xml" value="0.5" />
         <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/layout/contain_main.xml" value="0.9" />
+        <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/layout/fragment_feces_result.xml" value="0.1" />
+        <entry key="..\:/Nanosat/PKM 2022/github/pkm-2022/app/app/src/main/res/layout/fragment_feces_tips.xml" value="0.1" />
         <entry key="..\:/PKM2022/github/pkm-2022/app/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
       </map>
     </option>
