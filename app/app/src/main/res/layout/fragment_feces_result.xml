@@ -12,49 +12,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv_percentage_feces_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40%"
+            android:elevation="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/pc_result_feces"
+            app:layout_constraintEnd_toEndOf="@+id/pc_result_feces"
+            app:layout_constraintStart_toStartOf="@+id/pc_result_feces"
+            app:layout_constraintTop_toTopOf="@+id/pc_result_feces" />
+
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pc_result_feces"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginTop="12dp"
-            android:layoutMode="opticalBounds"
             android:isScrollContainer="false"
-            android:elevation="20dp"
+            android:layoutMode="opticalBounds"
             android:outlineProvider="background"
             app:layout_constraintEnd_toStartOf="@id/tv_feces_color_desc"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <TextView
             android:id="@+id/tv_feces_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/karla_medium"
-            android:text="Feces warna kuning"
+            android:text="Warna Feces"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="@id/pc_result_feces"
-            app:layout_constraintStart_toStartOf="@id/tv_feces_color_desc"/>
+            app:layout_constraintStart_toStartOf="@id/tv_feces_color_desc"
+            app:layout_constraintTop_toTopOf="@id/pc_result_feces" />
 
         <TextView
             android:id="@+id/tv_feces_color_desc"
             android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
-            android:textSize="14sp"
-            android:layout_height="wrap_content"
             android:fontFamily="@font/karla_light"
             android:text="@string/lorem"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/pc_result_feces"
-            app:layout_constraintTop_toBottomOf="@id/tv_feces_color"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_feces_color" />
 
         <TextView
             android:id="@+id/text_test"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="ini feces result" />
+            android:gravity="center"
+            android:text="ini feces result"
+            android:elevation="21dp"
+            android:visibility="gone" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_dominant_color"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@id/tv_dominant_color"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@+id/pc_result_feces"
+            app:layout_constraintTop_toBottomOf="@+id/pc_result_feces"
+            android:src="@color/brown_feces" />
+
+        <TextView
+            android:id="@+id/tv_dominant_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coklat"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_dominant_color"
+            app:layout_constraintStart_toEndOf="@+id/iv_dominant_color"
+            app:layout_constraintTop_toTopOf="@+id/iv_dominant_color"
+            app:layout_constraintEnd_toEndOf="@id/pc_result_feces"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,6 +51,7 @@ class FecesResultFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+
         return inflater.inflate(R.layout.fragment_feces_result, container, false)
     }
 
@@ -63,9 +64,9 @@ class FecesResultFragment : Fragment() {
         pieColorDataSet.colors = colorClass
         pieColorDataSet.sliceSpace = 2f
         pieColorDataSet.valueTextSize = 8f
-        pieColorDataSet.setDrawValues(true)
-        pieColorDataSet.setDrawIcons(true)
-//        val font = Typeface.createFromAsset(requireActivity().assets, "font/quicksand_light.ttf")
+        pieColorDataSet.setDrawValues(false)
+//        pieColorDataSet.setDrawIcons(true)
+//        val font = Typeface.createFromAsset(context?.assets, "font/quicksand_light.ttf")
 //        val typeface = context?.let { ResourcesCompat.getFont(it, R.font.karla_light) };
 //        pieColorDataSet.valueTypeface = font
 
@@ -81,12 +82,8 @@ class FecesResultFragment : Fragment() {
         fecesColorChart?.isRotationEnabled = false
         fecesColorChart?.setDrawEntryLabels(false)
         fecesColorChart?.legend?.isEnabled = false
-
-        val h: Highlight = Highlight(2f,0f, 0) // dataset index for piechart is always 0
-
+        val h: Highlight = Highlight(0f,0f, 0) // dataset index for piechart is always 0
         fecesColorChart?.highlightValues(arrayOf(h))
-
-//        fecesColorChart?.highlightValue(0f,0)
 
         fecesColorChart?.invalidate()
 
