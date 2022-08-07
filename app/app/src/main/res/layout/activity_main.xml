@@ -9,13 +9,14 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
+        android:soundEffectsEnabled="true"
         android:layout_height="match_parent">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
                 <com.google.android.material.appbar.AppBarLayout
                     android:id="@+id/app_bar"
                     android:layout_width="match_parent"
@@ -28,6 +29,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+                        <!--                        <androidx.appcompat.widget.Toolbar-->
+                        <!--                            android:id="@+id/toolbar"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="100dp"-->
+                        <!--                            android:background="@drawable/bg_appbar_layout"-->
+                        <!--                            android:theme="?attr/actionBarTheme"-->
+                        <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+                        <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                        <!--                            app:layout_constraintTop_toTopOf="parent" />-->
 
                         <ImageView
                             android:id="@+id/iv_mini_toilet"
@@ -87,7 +97,7 @@
                     android:textColor="@color/red"
                     android:textSize="18sp"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/karla_bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/app_bar" />
@@ -97,8 +107,8 @@
                     android:layout_width="11dp"
                     android:layout_height="11dp"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toStartOf="@+id/tv_result"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_result"
+                    app:layout_constraintStart_toStartOf="@id/tv_result"
+                    app:layout_constraintTop_toBottomOf="@id/tv_result"
                     app:srcCompat="@drawable/ic_circle" />
 
                 <TextView
@@ -110,9 +120,9 @@
                     android:fontFamily="@font/quicksand_medium"
                     android:text="Feces"
                     android:textColor="@color/grey"
-                    app:layout_constraintBottom_toBottomOf="@+id/iv_dot_feces"
-                    app:layout_constraintStart_toEndOf="@+id/iv_dot_feces"
-                    app:layout_constraintTop_toTopOf="@+id/iv_dot_feces" />
+                    app:layout_constraintBottom_toBottomOf="@id/iv_dot_feces"
+                    app:layout_constraintStart_toEndOf="@id/iv_dot_feces"
+                    app:layout_constraintTop_toTopOf="@id/iv_dot_feces" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_feces"
@@ -123,7 +133,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_feces">
+                    app:layout_constraintTop_toBottomOf="@id/tv_feces">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -182,9 +192,114 @@
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </androidx.cardview.widget.CardView>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/iv_dot_urine"
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:layout_marginTop="18dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_result"
+                    app:layout_constraintTop_toBottomOf="@id/cv_feces"
+                    app:srcCompat="@drawable/ic_circle" />
+
+                <TextView
+                    android:id="@+id/tv_urine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:textSize="13sp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:text="Urine"
+                    android:textColor="@color/grey"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_dot_urine"
+                    app:layout_constraintStart_toEndOf="@id/iv_dot_urine"
+                    app:layout_constraintTop_toTopOf="@id/iv_dot_urine" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_urine"
+                    android:layout_width="362dp"
+                    android:layout_height="250dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardBackgroundColor="@color/red"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_urine">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_date_updated_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:text="Last updated: 14 Maret 2022 12:00:55"
+                            android:fontFamily="@font/karla_light"
+                            android:textColor="@color/white"
+                            android:layout_marginBottom="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="225dp"
+                            app:cardCornerRadius="5dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <com.google.android.material.tabs.TabLayout
+                                    android:id="@+id/tab_layout_urine"
+                                    android:layout_width="140dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="@drawable/bg_tabs"
+                                    app:tabIndicator="@drawable/bg_select"
+                                    app:tabSelectedTextColor="@color/white"
+                                    app:tabTextColor="@color/grey"
+                                    app:tabMode="fixed"
+                                    app:tabGravity="fill"
+                                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                                    android:scrollbarSize="@dimen/material_emphasis_high_type"
+                                    app:tabIndicatorGravity="stretch"
+                                    app:tabIndicatorAnimationMode="elastic"
+                                    app:tabIndicatorAnimationDuration="200"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                                <androidx.viewpager2.widget.ViewPager2
+                                    android:id="@+id/view_pager_urine"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="35dp">
+
+                                </androidx.viewpager2.widget.ViewPager2>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cv_urine"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

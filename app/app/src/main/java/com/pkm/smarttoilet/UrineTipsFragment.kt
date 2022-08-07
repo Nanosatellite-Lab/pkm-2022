@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class FecesTipsFragment : Fragment() {
+class UrineTipsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feces_tips, container, false)
+        return inflater.inflate(R.layout.fragment_urine_tips, container, false)
     }
 
     companion object {

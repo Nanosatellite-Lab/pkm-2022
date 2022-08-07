@@ -1,13 +1,12 @@
 package com.pkm.smarttoilet.adapter
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.pkm.smarttoilet.FecesResultFragment
-import com.pkm.smarttoilet.FecesTipsFragment
+import com.pkm.smarttoilet.UrineResultFragment
+import com.pkm.smarttoilet.UrineTipsFragment
 
-class SectionPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+class UrineSectionPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
     override fun getItemCount(): Int {
         return 2
@@ -17,10 +16,10 @@ class SectionPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(a
         var fragment: Fragment? = null
         when(position){
             0 -> {
-                fragment = FecesResultFragment()
+                fragment = UrineResultFragment()
             }
             1 -> {
-                fragment = FecesTipsFragment()
+                fragment = UrineTipsFragment()
             }
         }
         return fragment as Fragment

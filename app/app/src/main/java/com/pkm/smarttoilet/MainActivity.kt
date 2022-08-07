@@ -9,7 +9,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.pkm.smarttoilet.adapter.SectionPagerAdapter
+import com.pkm.smarttoilet.adapter.FecesSectionPagerAdapter
+import com.pkm.smarttoilet.adapter.UrineSectionPagerAdapter
 import com.pkm.smarttoilet.viewmodel.FecesResultViewModel
 
 
@@ -23,11 +24,19 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
 
-        val sectionPagerAdapter = SectionPagerAdapter(this)
-        val viewPager: ViewPager2 = findViewById(R.id.view_pager_feces)
-        viewPager.adapter = sectionPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tab_layout_feces)
-        TabLayoutMediator(tabs, viewPager){tab, position->
+        val fecesSectionPagerAdapter = FecesSectionPagerAdapter(this)
+        val fecesViewPager: ViewPager2 = findViewById(R.id.view_pager_feces)
+        fecesViewPager.adapter = fecesSectionPagerAdapter
+        val tabsFeces: TabLayout = findViewById(R.id.tab_layout_feces)
+        TabLayoutMediator(tabsFeces, fecesViewPager){ tab, position->
+            tab.text = resources.getString(TAB_TITLES[position])
+        }.attach()
+
+        val urineSectionPagerAdapter = UrineSectionPagerAdapter(this)
+        val urineViewPager: ViewPager2 = findViewById(R.id.view_pager_urine)
+        urineViewPager.adapter = urineSectionPagerAdapter
+        val tabsUrine: TabLayout = findViewById(R.id.tab_layout_urine)
+        TabLayoutMediator(tabsUrine, urineViewPager){ tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
 
