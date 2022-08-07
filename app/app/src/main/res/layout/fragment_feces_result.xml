@@ -16,8 +16,8 @@
             android:id="@+id/tv_percentage_feces_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="40%"
             android:elevation="20dp"
+            android:text="40%"
             app:layout_constraintBottom_toBottomOf="@+id/pc_result_feces"
             app:layout_constraintEnd_toEndOf="@+id/pc_result_feces"
             app:layout_constraintStart_toStartOf="@+id/pc_result_feces"
@@ -64,9 +64,9 @@
             android:id="@+id/text_test"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:elevation="21dp"
             android:gravity="center"
             android:text="ini feces result"
-            android:elevation="21dp"
             android:visibility="gone" />
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -74,22 +74,74 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginTop="8dp"
+            android:src="@color/brown_feces"
             app:layout_constraintEnd_toStartOf="@id/tv_dominant_color"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@+id/pc_result_feces"
             app:layout_constraintTop_toBottomOf="@+id/pc_result_feces"
-            android:src="@color/brown_feces" />
+            app:shapeAppearanceOverlay="@style/customRoundedImageView" />
 
         <TextView
             android:id="@+id/tv_dominant_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Coklat"
             android:layout_marginStart="8dp"
+            android:text="Coklat"
             app:layout_constraintBottom_toBottomOf="@+id/iv_dominant_color"
+            app:layout_constraintEnd_toEndOf="@id/pc_result_feces"
             app:layout_constraintStart_toEndOf="@+id/iv_dominant_color"
-            app:layout_constraintTop_toTopOf="@+id/iv_dominant_color"
-            app:layout_constraintEnd_toEndOf="@id/pc_result_feces"/>
+            app:layout_constraintTop_toTopOf="@+id/iv_dominant_color" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_feces_form"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/feces_sample"
+            app:layout_constraintEnd_toEndOf="@id/pc_result_feces"
+            app:layout_constraintStart_toStartOf="@id/pc_result_feces"
+            app:layout_constraintTop_toBottomOf="@id/iv_dominant_color" />
+
+        <TextView
+            android:id="@+id/tv_feces_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/karla_medium"
+            android:text="Bentuk Feces"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_feces_form"
+            app:layout_constraintTop_toTopOf="@id/iv_feces_form" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/lorem"
+            app:layout_constraintStart_toStartOf="@id/tv_feces_form"
+            app:layout_constraintTop_toBottomOf="@id/tv_feces_form" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_feces_form_type"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_circle"
+            app:layout_constraintEnd_toStartOf="@id/tv_feces_form_type"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/iv_feces_form"
+            app:layout_constraintTop_toBottomOf="@id/iv_feces_form" />
+
+        <TextView
+            android:id="@+id/tv_feces_form_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipe 7"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_feces_form_type"
+            app:layout_constraintStart_toEndOf="@id/iv_feces_form_type"
+            app:layout_constraintTop_toTopOf="@id/iv_feces_form_type"
+            app:layout_constraintEnd_toEndOf="@id/iv_feces_form"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,12 +35,6 @@ class FecesResultFragment : Fragment() {
         dataVals.add(PieEntry(15f, "Putih"))
         dataVals.add(PieEntry(15f, "Hijau"))
         dataVals.add(PieEntry(15f, "Hitam"))
-//        dataVals.add(PieEntry(50f, ""))
-//        dataVals.add(PieEntry(15f, ""))
-//        dataVals.add(PieEntry(15f, ""))
-//        dataVals.add(PieEntry(15f, ""))
-//        dataVals.add(PieEntry(15f, ""))
-//        dataVals.add(PieEntry(15f, ""))
         return dataVals
     }
 
@@ -86,8 +80,8 @@ class FecesResultFragment : Fragment() {
         fecesColorChart?.highlightValues(arrayOf(h))
 
         fecesColorChart?.invalidate()
-
-        fecesColorChart?.animateY(1400, Easing.EaseInOutQuad)
+        //animation
+        fecesColorChart?.animateY(2000, Easing.EaseInOutQuad)
 
         Log.d("TAG1", "onViewCreated: ${R.color.yellow_feces.toString()} ${Color.RED} ")
 
