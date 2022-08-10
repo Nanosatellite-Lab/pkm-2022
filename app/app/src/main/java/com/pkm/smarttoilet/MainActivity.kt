@@ -1,6 +1,7 @@
 package com.pkm.smarttoilet
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.pkm.smarttoilet.adapter.FecesSectionPagerAdapter
 import com.pkm.smarttoilet.adapter.UrineSectionPagerAdapter
 import com.pkm.smarttoilet.viewmodel.FecesResultViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,11 +47,14 @@ class MainActivity : AppCompatActivity() {
         hasilDeteksi = findViewById(R.id.tv_result)
         swipeRefresh = findViewById(R.id.refresh_layout)
 
+        val updateTimeFeces = findViewById<TextView>(R.id.tv_date_updated)
+
         swipeRefresh.setOnRefreshListener {
-            num++
-            hasilDeteksi.text = num.toString()
+            val df = SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.US)
+            val time: String = df.format(Date())
+            updateTimeFeces.text = "Last Updated: $time"
             swipeRefresh.isRefreshing = false
-            fecesResultViewModel.addText(num.toString())
+
         }
 
 
