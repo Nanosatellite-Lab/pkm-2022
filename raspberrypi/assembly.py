@@ -4,7 +4,9 @@ import RPi.GPIO as GPIO
 import time
 import os
 from gpiozero.pins.pigpio import PiGPIOFactory
-
+from nturl2path import url2pathname
+import requests
+import datetime
 
 #ultrasonic configuration
 TRIG=21
@@ -30,6 +32,14 @@ def servoFlush():
 def capture():
     cmd1 = "libcamera-still -o capture_test.jpg --tuning-file /usr/share/libcamera/ipa/raspberrypi/imx219_noir.json"
     os.system(cmd1)
+    ##send image to server
+    #url = "http://localhost:4000/upload"
+    #current_time = datetime.datetime.now()
+    #files = { 
+    #        "profile" : open("capture_test.jpg", "rb"),
+    #        "time" : current_time
+    #        }
+    #r = requests.post(url, files=files)
     
 
 while True:
