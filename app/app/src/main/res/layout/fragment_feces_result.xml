@@ -13,42 +13,42 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_percentage_urine_color"
+            android:id="@+id/tv_percentage_feces_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="20dp"
             android:text="40%"
-            app:layout_constraintBottom_toBottomOf="@+id/pc_result_urine"
-            app:layout_constraintEnd_toEndOf="@+id/pc_result_urine"
-            app:layout_constraintStart_toStartOf="@+id/pc_result_urine"
-            app:layout_constraintTop_toTopOf="@+id/pc_result_urine" />
+            app:layout_constraintBottom_toBottomOf="@+id/pc_result_feces"
+            app:layout_constraintEnd_toEndOf="@+id/pc_result_feces"
+            app:layout_constraintStart_toStartOf="@+id/pc_result_feces"
+            app:layout_constraintTop_toTopOf="@+id/pc_result_feces" />
 
         <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/pc_result_urine"
+            android:id="@+id/pc_result_feces"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginTop="12dp"
             android:isScrollContainer="false"
             android:layoutMode="opticalBounds"
             android:outlineProvider="background"
-            app:layout_constraintEnd_toStartOf="@id/tv_urine_color_desc"
+            app:layout_constraintEnd_toStartOf="@id/tv_feces_color_desc"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-            android:id="@+id/tv_feces_urine"
+            android:id="@+id/tv_feces_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/karla_medium"
             android:text="Warna Feces"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/tv_urine_color_desc"
-            app:layout_constraintTop_toTopOf="@id/pc_result_urine" />
+            app:layout_constraintStart_toStartOf="@id/tv_feces_color_desc"
+            app:layout_constraintTop_toTopOf="@id/pc_result_feces" />
 
         <TextView
-            android:id="@+id/tv_urine_color_desc"
+            android:id="@+id/tv_feces_color_desc"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -57,8 +57,8 @@
             android:text="@string/lorem"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/pc_result_urine"
-            app:layout_constraintTop_toBottomOf="@id/tv_feces_urine" />
+            app:layout_constraintStart_toEndOf="@id/pc_result_feces"
+            app:layout_constraintTop_toBottomOf="@id/tv_feces_color" />
 
         <TextView
             android:id="@+id/text_test"
@@ -77,8 +77,8 @@
             android:src="@color/brown_feces"
             app:layout_constraintEnd_toStartOf="@id/tv_dominant_color"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/pc_result_urine"
-            app:layout_constraintTop_toBottomOf="@+id/pc_result_urine"
+            app:layout_constraintStart_toStartOf="@+id/pc_result_feces"
+            app:layout_constraintTop_toBottomOf="@+id/pc_result_feces"
             app:shapeAppearanceOverlay="@style/customRoundedImageView" />
 
         <TextView
@@ -88,7 +88,7 @@
             android:layout_marginStart="8dp"
             android:text="Coklat"
             app:layout_constraintBottom_toBottomOf="@+id/iv_dominant_color"
-            app:layout_constraintEnd_toEndOf="@id/pc_result_urine"
+            app:layout_constraintEnd_toEndOf="@id/pc_result_feces"
             app:layout_constraintStart_toEndOf="@+id/iv_dominant_color"
             app:layout_constraintTop_toTopOf="@+id/iv_dominant_color" />
 
@@ -98,8 +98,8 @@
             android:layout_height="125dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/feces_sample"
-            app:layout_constraintEnd_toEndOf="@id/pc_result_urine"
-            app:layout_constraintStart_toStartOf="@id/pc_result_urine"
+            app:layout_constraintEnd_toEndOf="@id/pc_result_feces"
+            app:layout_constraintStart_toStartOf="@id/pc_result_feces"
             app:layout_constraintTop_toBottomOf="@id/iv_dominant_color" />
 
         <TextView
@@ -114,6 +114,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_feces_form" />
 
         <TextView
+            android:id="@+id/tv_feces_form_desc"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

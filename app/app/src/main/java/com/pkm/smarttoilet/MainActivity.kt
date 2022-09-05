@@ -1,6 +1,5 @@
 package com.pkm.smarttoilet
 
-import android.R.attr.bitmap
 import android.content.ContentValues
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -67,33 +66,16 @@ class MainActivity : AppCompatActivity() {
         swipeRefresh = findViewById(R.id.refresh_layout)
         ivFecesForm = findViewById(R.id.iv_feces_form)
 
-
-
         val updateTimeFeces = findViewById<TextView>(R.id.tv_date_updated)
-
+        updateTimeFeces.text = "Last Updated: -"
         swipeRefresh.setOnRefreshListener {
-            val df = SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.US)
-            val time: String = df.format(Date())
-            updateTimeFeces.text = "Last Updated: $time"
 
-//          //test tfjs heroku
             val myImageUrl = "https://storage.googleapis.com/staging.pkm2022.appspot.com/upload/1662262660498_IMG_1927.jpg"
-
             // Declaring and initializing an Executor and a Handler
             val myExecutor = Executors.newSingleThreadExecutor()
             val myHandler = Handler(Looper.getMainLooper())
             myExecutor.execute {
                 myImage = mLoad(myImageUrl)
-//                Log.d(TAG, "onCreate: ${myImage.is}")
-//                if (myImage!=null){
-////                    val myFile = bitmapToFile(this, myImage, "mypkm2022.png")
-////                    ivFecesForm?.setImageBitmap(myImage)
-////                    val f: File = File("app/app/src/main/res/drawable")
-////                    val os: OutputStream = BufferedOutputStream(FileOutputStream(f))
-////                    myImage?.compress(Bitmap.CompressFormat.JPEG, 100, os)
-////                    os.close()
-//
-//                }
                 myHandler.post {
                     if(myImage!=null){
 //                        mSaveMediaToStorage(myImage)
@@ -116,6 +98,9 @@ class MainActivity : AppCompatActivity() {
 
             fecesResultViewModel.isLoading.observe(this){
                 if (!it){
+                    val df2 = SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.US)
+                    val time2: String = df2.format(Date())
+                    updateTimeFeces.text = "Last Updated: $time2"
                     swipeRefresh.isRefreshing = false
                 }
             }
@@ -148,32 +133,6 @@ class MainActivity : AppCompatActivity() {
         }
         return null
     }
-
-    // Refer: https://www.geeksforgeeks.org/circular-crop-an-image-and-save-it-to-the-file-in-android/
-    private fun mSaveMediaToStorage(bitmap: Bitmap?) {
-        val filename = "${System.currentTimeMillis()}.jpg"
-        var fos: OutputStream? = null
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            this.contentResolver?.also { resolver ->
-                val contentValues = ContentValues().apply {
-                    put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
-                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
-                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
-                }
-                val imageUri: Uri? = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-                fos = imageUri?.let { resolver.openOutputStream(it) }
-            }
-        } else {
-            val imagesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-            val image = File(imagesDir, filename)
-            fos = FileOutputStream(image)
-        }
-        fos?.use {
-            bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, it)
-            Toast.makeText(this , "Saved to Gallery" , Toast.LENGTH_SHORT).show()
-        }
-    }
-
 
     companion object {
         @StringRes

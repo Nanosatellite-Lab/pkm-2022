@@ -37,7 +37,7 @@ class UrineResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val urineColorChart = getView()?.findViewById<PieChart>(R.id.pc_result_urine)
+        val urineColorChart = getView()?.findViewById<PieChart>(R.id.pc_result_feces)
         val pieUrineColorDataSet = PieDataSet(dataValues1(),"ok")
         pieUrineColorDataSet.colors = colorClass
         pieUrineColorDataSet.sliceSpace = 2f

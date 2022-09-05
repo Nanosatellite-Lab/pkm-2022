@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -14,7 +15,6 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.highlight.Highlight
 import com.pkm.smarttoilet.viewmodel.FecesResultViewModel
 
 
@@ -22,6 +22,7 @@ class FecesResultFragment : Fragment() {
 
     private val model: FecesResultViewModel by activityViewModels()
     private lateinit var pieFecesColorDataSet: PieDataSet
+    private lateinit var fecesColorChart: PieChart
     private val colorClass: MutableList<Int> = mutableListOf(
         Color.parseColor("#876445"),
 //        Color.parseColor("#D61C4E"),
@@ -55,9 +56,9 @@ class FecesResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val myText = getView()?.findViewById<TextView>(R.id.text_test)
+        val myText = getView()?.findViewById<TextView>(R.id.tv_feces_color)
 
-        val fecesColorChart = getView()?.findViewById<PieChart>(R.id.pc_result_urine)
+        val fecesColorChart = getView()?.findViewById<PieChart>(R.id.pc_result_feces)
         pieFecesColorDataSet = PieDataSet(dataValues1(30f, 30f, 30f), "ok")
         pieFecesColorDataSet.colors = colorClass
         pieFecesColorDataSet.sliceSpace = 2f
@@ -80,8 +81,8 @@ class FecesResultFragment : Fragment() {
         fecesColorChart?.isRotationEnabled = false
         fecesColorChart?.setDrawEntryLabels(false)
         fecesColorChart?.legend?.isEnabled = false
-        val h: Highlight = Highlight(0f, 0f, 0) // dataset index for piechart is always 0
-        fecesColorChart?.highlightValues(arrayOf(h))
+//        val h: Highlight = Highlight(0f, 0f, 0) // dataset index for piechart is always 0
+//        fecesColorChart?.highlightValues(arrayOf(h))
 
         fecesColorChart?.invalidate()
         //animation
@@ -98,18 +99,94 @@ class FecesResultFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val myText = view?.findViewById<TextView>(R.id.text_test)
+        val myText = view?.findViewById<TextView>(R.id.tv_feces_color)
         model.myData.observe(viewLifecycleOwner) {
             myText?.text = it
             Log.d("TAG", "onViewCreated: $it")
         }
-        model.fecesColorData.observe(viewLifecycleOwner) {
-            if (it != null) {
-                val coklatFloat = it.prediction.coklat.toFloat()
-                val hijauFloat = it.prediction.hijau.toFloat()
-                val hitamFloat = it.prediction.hitam.toFloat()
-                pieFecesColorDataSet = PieDataSet(dataValues1(coklatFloat, hijauFloat, hitamFloat), "ok")
+        model.fecesColorData.observe(viewLifecycleOwner) { it ->
+            Log.d("TAG", "onResume: ${it.prediction.coklat}")
+
+            /* chart code */
+            val coklatFloat = it.prediction.coklat.toFloat()
+            val hijauFloat = it.prediction.hijau.toFloat()
+            val hitamFloat = it.prediction.hitam.toFloat()
+            Log.d("TAG", "onResume: $coklatFloat, $hijauFloat, $hitamFloat")
+            val fecesColorChart = view?.findViewById<PieChart>(R.id.pc_result_feces)
+            pieFecesColorDataSet = PieDataSet(dataValues1(coklatFloat, hijauFloat, hitamFloat), "ok")
+            pieFecesColorDataSet.colors = colorClass
+            pieFecesColorDataSet.sliceSpace = 2f
+            pieFecesColorDataSet.valueTextSize = 8f
+            pieFecesColorDataSet.setDrawValues(false)
+//        pieColorDataSet.setDrawIcons(true)
+//        val font = Typeface.createFromAsset(context?.assets, "font/quicksand_light.ttf")
+//        val typeface = context?.let { ResourcesCompat.getFont(it, R.font.karla_light) };
+//        pieColorDataSet.valueTypeface = font
+
+            val pieDataColorFeces = PieData(pieFecesColorDataSet)
+
+            fecesColorChart?.data = pieDataColorFeces
+            fecesColorChart?.setDrawEntryLabels(false)
+            fecesColorChart?.description?.isEnabled = false
+            fecesColorChart?.setUsePercentValues(true)
+            fecesColorChart?.setDrawMarkers(false)
+            fecesColorChart?.holeRadius = 65f
+            fecesColorChart?.transparentCircleRadius = 75f
+            fecesColorChart?.isRotationEnabled = false
+            fecesColorChart?.setDrawEntryLabels(false)
+            fecesColorChart?.legend?.isEnabled = false
+//            val h: Highlight = Highlight(0f, 0f, 0) // dataset index for piechart is always 0
+//            fecesColorChart?.highlightValues(arrayOf(h))
+
+            fecesColorChart?.invalidate()
+            //animation
+            fecesColorChart?.animateY(1500, Easing.EaseInOutQuad)
+
+            /* end of chart code*/
+
+            /* XML view integration*/
+
+            val classes = floatArrayOf(coklatFloat,hijauFloat, hitamFloat)
+            val classType = classes.indices.maxByOrNull { classes[it] } ?: -1
+
+            //Feces Color
+            val ivDominant = view?.findViewById<ImageView>(R.id.iv_dominant_color)
+            val tvDominant = view?.findViewById<TextView>(R.id.tv_dominant_color)
+            val tvPercentagePC = view?.findViewById<TextView>(R.id.tv_percentage_feces_color)
+            val tvDescFecesColor = view?.findViewById<TextView>(R.id.tv_feces_color_desc)
+            //Feces Form
+            val tvFecesFormType = view?.findViewById<TextView>(R.id.tv_feces_form_type)
+            val ivFecesForm = view?.findViewById<ImageView>(R.id.iv_feces_form)
+            val tvDescFecesForm = view?.findViewById<TextView>(R.id.tv_feces_form_desc)
+
+            when (classType){
+                0 -> {
+                    ivDominant?.setBackgroundColor(Color.parseColor("#876445"))
+                    tvDominant?.text = "Coklat"
+                    val percent = coklatFloat*100
+                    tvPercentagePC?.text = "${percent.toInt()}" + "%"
+                    tvDescFecesColor?.text = resources.getString(R.string.desc_feces_brown)
+                }
+                1 -> {
+                    ivDominant?.setBackgroundColor(Color.parseColor("#76BA99"))
+                    tvDominant?.text = "Hijau"
+                    val percent = hijauFloat*100
+                    tvPercentagePC?.text = "${percent.toInt()}" + "%"
+                    tvDescFecesColor?.text = resources.getString(R.string.desc_feces_green)
+                }
+                else -> {
+                    ivDominant?.setBackgroundColor(Color.parseColor("#2C3333"))
+                    tvDominant?.text = "Hitam"
+                    val percent = hitamFloat*100
+                    tvPercentagePC?.text = "${percent.toInt()}" + "%"
+                    tvDescFecesColor?.text = resources.getString(R.string.desc_feces_black)
+                }
             }
+
+
+
+            /* End of view integration*/
+
         }
     }
 

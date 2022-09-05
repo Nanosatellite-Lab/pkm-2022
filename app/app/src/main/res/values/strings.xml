@@ -8,44 +8,33 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_feces_result">Hasil</string>
     <string name="tab_text_feces_tips">Tips</string>
-    <string-array name="data_feces_form">
-        <item>Tipe 1</item>
-        <item>Tipe 2</item>
-        <item>Tipe 3</item>
-        <item>Tipe 4</item>
-        <item>Tipe 5</item>
-        <item>Tipe 6</item>
-    </string-array>
 
-    <string-array name="data_feces_form_desc">
-        <item>Desc feces form 1</item>
-        <item>Desc feces form 2</item>
-        <item>Desc feces form 3</item>
-        <item>Desc feces form 4</item>
-        <item>Desc feces form 5</item>
-        <item>Desc feces form 6</item>
-    </string-array>
+    <string name="desc_feces_brown">Desc feces brown</string>
+    <string name="desc_feces_green">Desc feces green</string>
+    <string name="desc_feces_black">Desc feces hitam</string>
 
-    <integer-array name="data_feces_form_photo">
-        <item>@drawable/tipe_1</item>
-        <item>@drawable/tipe_2</item>
-        <item>@drawable/tipe_3</item>
-        <item>@drawable/tipe_4</item>
-        <item>@drawable/tipe_5</item>
-        <item>@drawable/tipe_6</item>
-    </integer-array>
+    <string name="desc_feces_type_1">Desc feces type 1</string>
+    <string name="desc_feces_type_2">Desc feces type 2</string>
+    <string name="desc_feces_type_3">Desc feces type 3</string>
+    <string name="desc_feces_type_4">Desc feces type 4</string>
+    <string name="desc_feces_type_5">Desc feces type 5</string>
+    <string name="desc_feces_type_6">Desc feces type 6</string>
 
-    <string-array name="data_feces_color">
-        <item>Coklat</item>
-        <item>Hijau</item>
-        <item>Hitam</item>
-    </string-array>
+    <string name="tips_feces_color_brown">Tips feces brown</string>
+    <string name="tips_feces_color_green">Tips feces green</string>
+    <string name="tips_feces_color_black">Tips feces black</string>
 
-    <string-array name="data_feces_color_desc">
-        <item>Desc feces form 1</item>
-        <item>Desc feces form 2</item>
-        <item>Desc feces form 3</item>
-    </string-array>
+    <string name="tips_feces_type_1">Tips feces type 1</string>
+    <string name="tips_feces_type_2">Tips feces type 2</string>
+    <string name="tips_feces_type_3">Tips feces type 3</string>
+    <string name="tips_feces_type_4">Tips feces type 4</string>
+    <string name="tips_feces_type_5">Tips feces type 5</string>
+    <string name="tips_feces_type_6">Tips feces type 6</string>
+
+
+
+
+
 
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500.</string>
 </resources>
