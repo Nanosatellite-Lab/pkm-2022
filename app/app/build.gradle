@@ -58,6 +58,8 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     //chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //apache
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 
 
 
