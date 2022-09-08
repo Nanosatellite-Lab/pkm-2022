@@ -154,33 +154,78 @@ class FecesResultFragment : Fragment() {
             val tvDominant = view?.findViewById<TextView>(R.id.tv_dominant_color)
             val tvPercentagePC = view?.findViewById<TextView>(R.id.tv_percentage_feces_color)
             val tvDescFecesColor = view?.findViewById<TextView>(R.id.tv_feces_color_desc)
-            //Feces Form
-            val tvFecesFormType = view?.findViewById<TextView>(R.id.tv_feces_form_type)
-            val ivFecesForm = view?.findViewById<ImageView>(R.id.iv_feces_form)
-            val tvDescFecesForm = view?.findViewById<TextView>(R.id.tv_feces_form_desc)
 
             when (classType){
                 0 -> {
-                    ivDominant?.setBackgroundColor(Color.parseColor("#876445"))
+                    ivDominant?.setImageResource(R.color.brown_feces)
+//                    ivDominant?.setBackgroundColor(Color.parseColor("#876445"))
                     tvDominant?.text = "Coklat"
                     val percent = coklatFloat*100
                     tvPercentagePC?.text = "${percent.toInt()}" + "%"
                     tvDescFecesColor?.text = resources.getString(R.string.desc_feces_brown)
                 }
                 1 -> {
-                    ivDominant?.setBackgroundColor(Color.parseColor("#76BA99"))
+                    ivDominant?.setImageResource(R.color.green_feces)
+//                    ivDominant?.setBackgroundColor(Color.parseColor("#76BA99"))
                     tvDominant?.text = "Hijau"
                     val percent = hijauFloat*100
                     tvPercentagePC?.text = "${percent.toInt()}" + "%"
                     tvDescFecesColor?.text = resources.getString(R.string.desc_feces_green)
                 }
                 else -> {
-                    ivDominant?.setBackgroundColor(Color.parseColor("#2C3333"))
+                    ivDominant?.setImageResource(R.color.black_feces)
+//                    ivDominant?.setBackgroundColor(Color.parseColor("#2C3333"))
                     tvDominant?.text = "Hitam"
                     val percent = hitamFloat*100
                     tvPercentagePC?.text = "${percent.toInt()}" + "%"
                     tvDescFecesColor?.text = resources.getString(R.string.desc_feces_black)
                 }
+            }
+            model.feceFormData.observe(viewLifecycleOwner){
+                val tipe1Float = it.prediction.tipe1.toFloat()
+                val tipe2Float = it.prediction.tipe2.toFloat()
+                val tipe3Float = it.prediction.tipe3.toFloat()
+                val tipe4Float = it.prediction.tipe4.toFloat()
+                val tipe5Float = it.prediction.tipe5.toFloat()
+                val tipe6Float = it.prediction.tipe6.toFloat()
+
+                val classesForm = floatArrayOf(tipe1Float,tipe2Float,tipe3Float, tipe4Float, tipe5Float, tipe6Float)
+                val ivFecesForm = view?.findViewById<ImageView>(R.id.iv_feces_form)
+                val tvFecesFormType = view?.findViewById<TextView>(R.id.tv_feces_form_type)
+                val tvFecesFormDesc = view?.findViewById<TextView>(R.id.tv_feces_form_desc)
+                when (classesForm.indices.maxByOrNull { classesForm[it] } ?: -1){
+                    0 -> {
+                        ivFecesForm?.setImageResource(R.drawable.tipe_1)
+                        tvFecesFormDesc?.text = resources.getString(R.string.desc_feces_type_1)
+                        tvFecesFormType?.text = "Tipe 1"
+                    }
+                    1 -> {
+                        ivFecesForm?.setImageResource(R.drawable.tipe_2)
+                        tvFecesFormDesc?.text = resources.getString(R.string.desc_feces_type_2)
+                        tvFecesFormType?.text = "Tipe 2"
+                    }
+                    2 -> {
+                        ivFecesForm?.setImageResource(R.drawable.tipe_3)
+                        tvFecesFormDesc?.text = resources.getString(R.string.desc_feces_type_3)
+                        tvFecesFormType?.text = "Tipe 3"
+                    }
+                    3 -> {
+                        ivFecesForm?.setImageResource(R.drawable.tipe_4)
+                        tvFecesFormDesc?.text = resources.getString(R.string.desc_feces_type_4)
+                        tvFecesFormType?.text = "Tipe 4"
+                    }
+                    4 -> {
+                        ivFecesForm?.setImageResource(R.drawable.tipe_5)
+                        tvFecesFormDesc?.text = resources.getString(R.string.desc_feces_type_5)
+                        tvFecesFormType?.text = "Tipe 5"
+                    }
+                    5 -> {
+                        ivFecesForm?.setImageResource(R.drawable.tipe_6)
+                        tvFecesFormDesc?.text = resources.getString(R.string.desc_feces_type_6)
+                        tvFecesFormType?.text = "Tipe 6"
+                    }
+                }
+
             }
 
 

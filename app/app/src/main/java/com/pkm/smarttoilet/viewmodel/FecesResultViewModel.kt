@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pkm.smarttoilet.retrofit.ApiConfigFecesColor
+import com.pkm.smarttoilet.retrofit.ApiConfigFecesForm
 import com.pkm.smarttoilet.retrofit.response.ResponseFecesColor
+import com.pkm.smarttoilet.retrofit.response.ResponseFecesForm
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,11 +25,12 @@ class FecesResultViewModel: ViewModel() {
         _myData.value = updatedNum
         Log.d(TAG, "addText: ${myData.value} ${_myData.value}")
     }
-    companion object {
-        private const val TAG = "FecesResultViewModel"
-    }
+
     private val _fecesColorData = MutableLiveData<ResponseFecesColor>()
     val fecesColorData: LiveData<ResponseFecesColor> = _fecesColorData
+
+    private val _fecesFormData = MutableLiveData<ResponseFecesForm>()
+    val feceFormData:LiveData<ResponseFecesForm> = _fecesFormData
 
     fun upFecesColor(file: MultipartBody.Part){
         _isLoading.value = true
@@ -59,5 +62,39 @@ class FecesResultViewModel: ViewModel() {
             }
 
         })
+    }
+    fun upFecesForm(file: MultipartBody.Part){
+        val client = ApiConfigFecesForm.getApiServiceFecesForm().uploadFecesForm(file)
+        client.enqueue(object: Callback<ResponseFecesForm>{
+            override fun onResponse(
+                call: Call<ResponseFecesForm>,
+                response: Response<ResponseFecesForm>
+            ) {
+                if (response.isSuccessful){
+//                    _isLoading.value = false
+                    val responseBody = response.body()
+                    _fecesFormData.value = response.body()
+
+                    Log.d(TAG, "onResponse: ${response.body()}")
+                }
+                else {
+//                    _isLoading.value = false
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                    Log.e(TAG, "onFailure: ${response.code()}")
+                    Log.e(TAG, "onFailure: ${response.errorBody()}")
+//                    _responseCode.value = -1
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseFecesForm>, t: Throwable) {
+//                _isLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    companion object {
+        private const val TAG = "FecesResultViewModel"
     }
 }
