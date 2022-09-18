@@ -151,9 +151,9 @@ class FecesResultFragment : Fragment() {
 
             //Feces Color
             val ivDominant = view?.findViewById<ImageView>(R.id.iv_dominant_color)
-            val tvDominant = view?.findViewById<TextView>(R.id.tv_dominant_color)
+            val tvDominant = view?.findViewById<TextView>(R.id.tv_dominant_color_urine)
             val tvPercentagePC = view?.findViewById<TextView>(R.id.tv_percentage_feces_color)
-            val tvDescFecesColor = view?.findViewById<TextView>(R.id.tv_feces_color_desc)
+            val tvDescFecesColor = view?.findViewById<TextView>(R.id.tv_urine_color_desc)
 
             when (classType){
                 0 -> {

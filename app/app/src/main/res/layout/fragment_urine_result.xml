@@ -31,7 +31,7 @@
             android:isScrollContainer="false"
             android:layoutMode="opticalBounds"
             android:outlineProvider="background"
-            app:layout_constraintEnd_toStartOf="@id/tv_feces_color_desc"
+            app:layout_constraintEnd_toStartOf="@id/tv_urine_color_desc"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,11 +44,11 @@
             android:fontFamily="@font/karla_medium"
             android:text="Warna Urine"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/tv_feces_color_desc"
+            app:layout_constraintStart_toStartOf="@id/tv_urine_color_desc"
             app:layout_constraintTop_toTopOf="@id/pc_result_feces" />
 
         <TextView
-            android:id="@+id/tv_feces_color_desc"
+            android:id="@+id/tv_urine_color_desc"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -76,14 +76,14 @@
             android:layout_height="15dp"
             android:layout_marginTop="8dp"
             android:src="@color/brown_feces"
-            app:layout_constraintEnd_toStartOf="@id/tv_dominant_color"
+            app:layout_constraintEnd_toStartOf="@id/tv_dominant_color_urine"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@+id/pc_result_feces"
             app:layout_constraintTop_toBottomOf="@+id/pc_result_feces"
             app:shapeAppearanceOverlay="@style/customRoundedImageView" />
 
         <TextView
-            android:id="@+id/tv_dominant_color"
+            android:id="@+id/tv_dominant_color_urine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

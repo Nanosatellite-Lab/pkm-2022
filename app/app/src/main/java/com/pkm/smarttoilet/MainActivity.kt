@@ -1,6 +1,7 @@
 package com.pkm.smarttoilet
 
 import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -23,6 +24,7 @@ import com.pkm.smarttoilet.adapter.FecesSectionPagerAdapter
 import com.pkm.smarttoilet.adapter.UrineSectionPagerAdapter
 import com.pkm.smarttoilet.viewmodel.FecesResultViewModel
 import com.pkm.smarttoilet.viewmodel.MainViewModel
+import com.pkm.smarttoilet.viewmodel.UrineResultViewModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -40,11 +42,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var hasilDeteksi: TextView
     private lateinit var fecesResultViewModel: FecesResultViewModel
+    private lateinit var urineResultViewModel: UrineResultViewModel
     private lateinit var mainViewModel: MainViewModel
     private var ivFecesForm: ImageView? = null
     private var getFile: File? = null
     private var myImage: Bitmap? = null
     var num: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -67,13 +71,19 @@ class MainActivity : AppCompatActivity() {
         }.attach()
 
         fecesResultViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FecesResultViewModel::class.java]
+        urineResultViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[UrineResultViewModel::class.java]
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
         hasilDeteksi = findViewById(R.id.tv_result)
         swipeRefresh = findViewById(R.id.refresh_layout)
         ivFecesForm = findViewById(R.id.iv_feces_form)
 
+        val ivHistory = findViewById<ImageView>(R.id.ic_history)
+        ivHistory.setOnClickListener {
+            startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
+        }
         val updateTimeFeces = findViewById<TextView>(R.id.tv_date_updated)
         updateTimeFeces.text = "Last Updated: -"
+
         swipeRefresh.setOnRefreshListener {
 
             mainViewModel.getLatestImageUrl()
@@ -94,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             val myExecutor = Executors.newSingleThreadExecutor()
             val myHandler = Handler(Looper.getMainLooper())
             myExecutor.execute {
-                myImage = mLoad(myImageUrl)
+                myImage = mLoad("https://storage.googleapis.com/staging.pkm2022.appspot.com/upload/1662262660498_IMG_1927.jpg")
                 myHandler.post {
                     if(myImage!=null){
 //                        mSaveMediaToStorage(myImage) taken from geeks for geeks
@@ -110,6 +120,7 @@ class MainActivity : AppCompatActivity() {
                             f2.name,
                             requestImageFile
                         )
+//                        urineResultViewModel.upUrineColor(imageMultipartBody)
                         fecesResultViewModel.upFecesForm(imageMultipartBody)
                         fecesResultViewModel.upFecesColor(imageMultipartBody)
                     }
@@ -128,6 +139,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
     // Function to establish connection and load image
     private fun mLoad(string: String): Bitmap? {
         val url: URL = mStringToURL(string)!!

@@ -8,6 +8,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_feces_result">Hasil</string>
     <string name="tab_text_feces_tips">Tips</string>
+    <string name="tab_feces_history">Feces</string>
+    <string name="tab_urine_history">Urine</string>
 
     <string name="desc_feces_brown">Desc feces brown</string>
     <string name="desc_feces_green">Desc feces green</string>
@@ -31,9 +33,13 @@
     <string name="tips_feces_type_5">Tips feces type 5</string>
     <string name="tips_feces_type_6">Tips feces type 6</string>
 
+    <string name="desc_urine_white">Desc feces white</string>
+    <string name="desc_urine_green">Desc feces green</string>
+    <string name="desc_urine_yellow">Desc feces yellow</string>
 
-
-
+    <string name="tips_urine_color_brown">Tips feces brown</string>
+    <string name="tips_urine_color_green">Tips feces green</string>
+    <string name="tips_urine_color_yellow">Tips feces yellow</string>
 
 
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500.</string>
